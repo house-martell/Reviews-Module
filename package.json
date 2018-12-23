@@ -24,6 +24,7 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "jest": "^23.6.0",
+    "svg-to-react-cli": "^1.5.0",
     "superagent": "^4.0.0",
     "supertest": "^3.3.0",
     "webpack": "^2.2.1"
@@ -41,6 +42,7 @@
     "nodemon": "^1.18.9",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "sentencer": "^0.1.5"
+    "sentencer": "^0.1.5",
+    "react-open-iconic-svg": "^2.0.0"
   }
 }

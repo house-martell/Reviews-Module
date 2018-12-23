@@ -18,6 +18,8 @@ const reviewSchema = mongoose.Schema({
   body_type: {type: String, require: false},
   date: {type: Date, require: false},
   stars: {type: Number, require: false},
+  fit: {type: Number, require: false},
+  support: {type: Number, require: false},
   what_you_like: {type: String, require: false},
   what_you_didnt_like: {type: String, require: false} 
   
