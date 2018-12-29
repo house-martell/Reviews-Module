@@ -62,6 +62,7 @@ class App extends React.Component {
         starCount[array[i].stars] ++;
       }
     }
+
     this.setState({stars: starCount});
   }
 
@@ -167,15 +168,15 @@ class App extends React.Component {
         />
         
         <div id = 'main-view'> 
-        {/* continue working HERE */}
-        {/* {(this.state.view === )} */}
+          {/* continue working HERE */}
+          {/* {(this.state.view === )} */}
 
-        <div id = 'reviewData'>
-          <Reviews
-            reviewData = {this.state.reviews}
-          />
+          <div id = 'reviewData'>
+            <Reviews
+              reviewData = {this.state.reviews}
+            />
         
-        </div>
+          </div>
 
         </div>
 

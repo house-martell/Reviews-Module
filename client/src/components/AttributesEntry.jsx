@@ -1,10 +1,12 @@
 import React from 'react';
+import { Star } from '@material-ui/icons';
 
 
 const AttributesEntry = (props) => {
   return (
-    <div>
-      STARS: {props.item.stars}
+    <div id ='stars'>
+      <img src = {require(`/Users/Jon/HRLA/Reviews-Module/client/dist/images/${props.item.stars}of5.gif`)}></img>
+      {/* {Array(props.item.stars).fill(<Star />)} */}
       <br></br>
       {props.item.username}
       <br></br>  
