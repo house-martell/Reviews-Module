@@ -39,11 +39,14 @@ class App extends React.Component {
     this.getPageCount = this.getPageCount.bind(this);
     this.getOnlyTen = this.getOnlyTen.bind(this);
     this.totalStars = this.totalStars.bind(this);
+    this.onDropdown = this.onDropdown.bind(this);
+    this.onClick = this.onClick.bind(this);
+    this.reset = this.reset.bind(this);
     
   }
   
   getRandomNumber(max) {
-    return Math.floor(Math.random() * Math.floor(max));
+    return Math.ceil(Math.random() * Math.floor(max));
   }
 
   componentDidMount() {
@@ -161,6 +164,17 @@ class App extends React.Component {
     filter.then(() => {
       this.getPageCount(this.state.reviewsToDisplay);
     });
+    filter.then(() => {
+      let items = document.getElementsByClassName('reset');
+      items = Array.prototype.slice.call(items);
+      
+      items.forEach(item => {
+        if (!item.classList.contains('open')) {
+          item.classList.add('open');
+        } 
+      });
+      
+    });
   }
 
   filterMoreResults (selected, category) {
@@ -185,6 +199,17 @@ class App extends React.Component {
     promise.then(() => {
       this.getPageCount(this.state.reviewsToDisplay);
     });
+    promise.then(() => {
+      let items = document.getElementsByClassName('reset');
+      items = Array.prototype.slice.call(items);
+      
+      items.forEach(item => {
+        if (!item.classList.contains('open')) {
+          item.classList.add('open');
+        } 
+      });
+      
+    });
   }
 
   getPageCount (array) {
@@ -193,7 +218,7 @@ class App extends React.Component {
   }
 
   handlePageClick (selector) {
-    let newSelection = ('bitchin', selector.selected);
+    let newSelection = selector.selected;
     console.log('heyyo', newSelection);
     let newIndex = newSelection * 10;
     console.log('howdy', newIndex);
@@ -216,14 +241,55 @@ class App extends React.Component {
         }
       }
     }
-    totalStars = Math.ceil(finalCount / array.length);
+    totalStars = Number(totalStars);
+    totalStars = Math.floor(finalCount / array.length);
     console.log('total', totalStars);
     this.setState({totalStars: totalStars});
   }
 
+  onDropdown(className) {
+    let items = document.getElementsByClassName(className);
+    items = Array.prototype.slice.call(items);
+    items.forEach(item => {
+      if (!item.classList.contains('open')) {
+        item.classList.add('open');
+      } else {
+        item.classList.remove('open');
+      }
+    });
+  }
+
+  onClick() {
+    let arr = ['rating-list', 'fit-list', 'support-list', 'athletic-list', 'age-list', 'body-list'];
+    for (var i = 0; i < arr.length; i++) {
+      let items = document.getElementsByClassName(arr[i]);
+      items = Array.prototype.slice.call(items);
+      items.forEach(item => {
+        if (item.classList.contains('open')) {
+          item.classList.remove('open');
+        } 
+      });
+    }
+  }
+
+  reset() {
+    this.getReviews(this.state.reviews[0].product_id);
+    let items = document.getElementsByClassName('reset');
+    items = Array.prototype.slice.call(items);
+      
+    items.forEach(item => {
+      if (item.classList.contains('open')) {
+        item.classList.remove('open');
+      } 
+    });
+
+  }
+
+
+
   render() {
     return (
-      <div>
+      <div className = 'main'>
         <div className = 'aligned'>
           <h1 className = 'head'> Reviews</h1>
           <h2> How's this gear working for you?</h2>
@@ -241,39 +307,41 @@ class App extends React.Component {
           bodyData = {this.state.body}
           filterResults = {this.filterResults}
           filterMoreResults = {this.filterMoreResults}
+          onDropdown = {this.onDropdown}
+          reset = {this.reset}
         />
         
         
-       
-          
-
-        {/* continue working HERE */}
-        {/* {(this.state.view === )} */}
-
-        <div className="commentBox">
-          <Reviews
-            reviewData = {this.state.reviewsToDisplay}
-          />
-          <ReactPaginate previousLabel={'previous'}
-            nextLabel={'next'}
-            breakLabel={'...'}
-            breakClassName={'break-me'}
-            pageCount={this.state.pageCount}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            onPageChange={this.handlePageClick}
-            containerClassName={'pagination'}
-            subContainerClassName={'pages pagination'}
-            activeClassName={'active'} />
+        <div>
+          <hr className = 'separator'></hr>
         </div>
 
-        {/* <div id = 'reviewData'>
+
+        <div className = 'review-holder' onClick = {() => this.onClick()}>
+          <div className="commentBox">
+            <Reviews
+              reviewData = {this.state.reviewsToDisplay}
+            />
+            <ReactPaginate previousLabel={'prev'}
+              nextLabel={'next'}
+              breakLabel={'...'}
+              breakClassName={'break-me'}
+              pageCount={this.state.pageCount}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              onPageChange={this.handlePageClick}
+              containerClassName={'pagination'}
+              subContainerClassName={'pages pagination'}
+              activeClassName={'active'} />
+          </div>
+
+          {/* <div id = 'reviewData'>
             
             
           </div> */}
-
+        </div>
       </div>
-
+      
 
       
     );
