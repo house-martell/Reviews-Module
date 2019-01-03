@@ -1,5 +1,6 @@
 var Sentencer = require('sentencer');
 const {Review} = require('./index.js');
+const DateGenerator = require('random-date-generator');
 
 
 
@@ -12,6 +13,7 @@ let athleticType = ['Yogi', 'Dancer', 'Runner', 'Cyclist', 'Sweaty Generalist'];
 let locations = ['Los Angeles, CA', 'Miami, FL', 'Boise, ID', 'New York, NY', 'Seattle, OR', 'San Francisco, CA'];
 let fitSupport = [14, 28, 42, 56, 70, 84, 98];
 
+
 let getRandomFromArray = function(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 };
@@ -20,18 +22,23 @@ let getRandomNumber = function(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+let startDate = new Date(2015, 1, 1);
+let endDate = new Date(2019, 1, 1);
+
+
 
 const randomlyGeneratedReviews = (num) => {
   for (var i = 0; i < num; i++) {
     holder.push({
       product_id: getRandomNumber(1, 5),
+      rev_title: Sentencer.make('These {{ noun }} are {{ an_adjective}}'),
       username: Sentencer.make('{{ noun }}' + getRandomNumber(1, 100)),
       body_text: Sentencer.make('This item has {{ a_noun }} and {{ an_adjective }} {{ noun }} in it.'),
       location: getRandomFromArray(locations),
       athletic_type: getRandomFromArray(athleticType),
       age_range: getRandomFromArray(ageRange),
       body_type: getRandomFromArray(bodyTypes),
-      date: 'November 22, 1776',
+      date: DateGenerator.getRandomDateInRange(startDate, endDate),
       stars: getRandomNumber(1, 5),
       fit: getRandomFromArray(fitSupport),
       support: getRandomFromArray(fitSupport),
@@ -42,7 +49,7 @@ const randomlyGeneratedReviews = (num) => {
   }
 };
 
-randomlyGeneratedReviews(20);
+randomlyGeneratedReviews(200);
 
 let insertData = function(arr) {
   Review.insertMany(

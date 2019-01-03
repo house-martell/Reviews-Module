@@ -41,14 +41,16 @@
     "express": "^4.16.4",
     "file-loader": "^3.0.1",
     "flexbox-react": "^4.4.0",
+    "lodash": "^4.17.11",
     "material-design-icons": "^3.0.1",
     "mongoose": "^5.4.0",
     "nodemon": "^1.18.9",
+    "random-date-generator": "^1.0.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-icons": "^3.2.2",
-    "react-open-iconic-svg": "^2.0.0",
+    "react-paginate": "^6.0.0",
     "sentencer": "^0.1.5",
+    "underscore": "^1.9.1",
     "url-loader": "^1.1.2"
   }
 }

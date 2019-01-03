@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Reviews from './components/Reviews.jsx';
 import axios from 'axios';
 import Filters from './components/Filters.jsx';
+import ReactPaginate from 'react-paginate';
 
 
 
@@ -18,7 +19,12 @@ class App extends React.Component {
       support: {},
       athletic: {},
       age: {},
-      body: {}
+      body: {},
+      pageCount: 0,
+      offset: 10,
+      index: 0,
+      totalStars: 1,
+      reviewsToDisplay: []
     };
     this.getReviews = this.getReviews.bind(this);
     this.getStarCount = this.getStarCount.bind(this);
@@ -29,6 +35,11 @@ class App extends React.Component {
     this.getBodCount = this.getBodCount.bind(this);
     this.filterResults = this.filterResults.bind(this);
     this.filterMoreResults = this.filterMoreResults.bind(this);
+    this.handlePageClick = this.handlePageClick.bind(this);
+    this.getPageCount = this.getPageCount.bind(this);
+    this.getOnlyTen = this.getOnlyTen.bind(this);
+    this.totalStars = this.totalStars.bind(this);
+    
   }
   
   getRandomNumber(max) {
@@ -43,12 +54,15 @@ class App extends React.Component {
     axios
       .get(`/Reviews/${id}`)
       .then((data) => this.setState({reviews: data.data}))
+      .then(data => this.totalStars(this.state.reviews))
+      .then(data => this.getOnlyTen(this.state.reviews, this.state.index))
       .then(data => this.getStarCount(this.state.reviews))
       .then(data => this.getFitCount(this.state.reviews))
       .then(data => this.getSupportCount(this.state.reviews))
       .then(data => this.getAthleticCount(this.state.reviews))
       .then(data => this.getAgeCount(this.state.reviews))
       .then(data => this.getBodCount(this.state.reviews))
+      .then(data => this.getPageCount(this.state.reviews))
       .then(data => console.log(this.state));
   }
 
@@ -68,7 +82,7 @@ class App extends React.Component {
 
   getFitCount(array) {
     let fitCount = {};
-    for (let i =0; i<array.length; i++) {
+    for (let i = 0; i < array.length; i++) {
       if (!fitCount.hasOwnProperty(array[i].fit)) {
         fitCount[array[i].fit] = 1;
       } else {
@@ -80,7 +94,7 @@ class App extends React.Component {
 
   getSupportCount(array) {
     let supportCount = {};
-    for (let i =0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i++) {
       if (!supportCount.hasOwnProperty(array[i].fit)) {
         supportCount[array[i].fit] = 1;
       } else {
@@ -92,7 +106,7 @@ class App extends React.Component {
 
   getAthleticCount(array) {
     let athCount = {};
-    for (let i =0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i++) {
       if (!athCount.hasOwnProperty(array[i].athletic_type)) {
         athCount[array[i].athletic_type] = 1;
       } else {
@@ -104,7 +118,7 @@ class App extends React.Component {
 
   getAgeCount(array) {
     let ageCount = {};
-    for (let i =0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i++) {
       if (!ageCount.hasOwnProperty(array[i].age_range)) {
         ageCount[array[i].age_range] = 1;
       } else {
@@ -127,32 +141,94 @@ class App extends React.Component {
   }
 
   filterResults (selected, category) {
-    let newResults = [];
-    for (var i = 0; i < this.state.reviews.length; i++) {
-      if (this.state.reviews[i][category] === Number(selected)) {
-        newResults.push(this.state.reviews[i]);
+    let filter = new Promise((resolve, reject) => {
+      let newResults = [];
+      for (var i = 0; i < this.state.reviews.length; i++) {
+        if (this.state.reviews[i][category] === Number(selected)) {
+          newResults.push(this.state.reviews[i]);
+        }
       }
-    }
-    this.setState({reviews: newResults});
+      this.setState({reviewsToDisplay: newResults});
+      if (this.state.reviews.length > 0) {
+        resolve('filtered results');
+      } else {
+        reject('no reviews');
+      }
+    });
+    filter.then(() => {
+      this.getOnlyTen(this.state.reviewsToDisplay, 0);
+    });
+    filter.then(() => {
+      this.getPageCount(this.state.reviewsToDisplay);
+    });
   }
 
   filterMoreResults (selected, category) {
-    let filtered = [];
-    for (var i = 0; i < this.state.reviews.length; i++) {
-      if (this.state.reviews[i][category] === selected) {
-        filtered.push(this.state.reviews[i]);
+    let promise = new Promise((resolve, reject) => {
+      let filtered = [];
+      for (var i = 0; i < this.state.reviews.length; i++) {
+        if (this.state.reviews[i][category] === selected) {
+          filtered.push(this.state.reviews[i]);
+        }
+      }
+      console.log('filtered', filtered);
+      this.setState({reviewsToDisplay: filtered});
+      if (this.state.reviews.length > 0) {
+        resolve('array seeded');
+      } else {
+        reject('reviews not seeded');
+      }
+    });
+    promise.then(() => {
+      this.getOnlyTen(this.state.reviewsToDisplay, 0);
+    });
+    promise.then(() => {
+      this.getPageCount(this.state.reviewsToDisplay);
+    });
+  }
+
+  getPageCount (array) {
+    let count = (array.length / this.props.perPage);
+    this.setState({pageCount: count});
+  }
+
+  handlePageClick (selector) {
+    let newSelection = ('bitchin', selector.selected);
+    console.log('heyyo', newSelection);
+    let newIndex = newSelection * 10;
+    console.log('howdy', newIndex);
+    this.getOnlyTen(this.state.reviews, newIndex);
+  }
+
+  getOnlyTen (array, index) {
+    let ten = array.slice(index, index + 10);
+    console.log('this is ten', ten);
+    this.setState({reviewsToDisplay: ten});
+  }
+
+  totalStars (array) {
+    let finalCount = 0;
+    let totalStars = 0;
+    for (var i = 0; i < array.length; i++) {
+      for (var key in array[i]) {
+        if (key === 'stars') {
+          finalCount += array[i][key];
+        }
       }
     }
-    this.setState({reviews: filtered});
+    totalStars = Math.ceil(finalCount / array.length);
+    console.log('total', totalStars);
+    this.setState({totalStars: totalStars});
   }
 
   render() {
     return (
       <div>
-        <div>
-          <h1> Reviews</h1>
+        <div className = 'aligned'>
+          <h1 className = 'head'> Reviews</h1>
           <h2> How's this gear working for you?</h2>
-          <button>Create a Review</button>
+          <img src = {require(`/Users/Jon/HRLA/Reviews-Module/client/dist/images/${this.state.totalStars}of5.gif`)} className = 'totalStars'></img>
+          <button className = 'create'>Create a Review</button>
         </div>
         
         
@@ -167,21 +243,39 @@ class App extends React.Component {
           filterMoreResults = {this.filterMoreResults}
         />
         
-        <div id = 'main-view'> 
-          {/* continue working HERE */}
-          {/* {(this.state.view === )} */}
-
-          <div id = 'reviewData'>
-            <Reviews
-              reviewData = {this.state.reviews}
-            />
         
-          </div>
+       
+          
 
+        {/* continue working HERE */}
+        {/* {(this.state.view === )} */}
+
+        <div className="commentBox">
+          <Reviews
+            reviewData = {this.state.reviewsToDisplay}
+          />
+          <ReactPaginate previousLabel={'previous'}
+            nextLabel={'next'}
+            breakLabel={'...'}
+            breakClassName={'break-me'}
+            pageCount={this.state.pageCount}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={this.handlePageClick}
+            containerClassName={'pagination'}
+            subContainerClassName={'pages pagination'}
+            activeClassName={'active'} />
         </div>
 
+        {/* <div id = 'reviewData'>
+            
+            
+          </div> */}
 
       </div>
+
+
+      
     );
   }
 
@@ -191,7 +285,9 @@ class App extends React.Component {
 
 
 
-ReactDOM.render(<App />, document.getElementById('reviews'));
+ReactDOM.render(<App 
+  perPage = {10}
+/>, document.getElementById('reviews'));
 
 
 

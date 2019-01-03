@@ -10,13 +10,14 @@ connection.once('open', () => console.log('connected to mongoDB'));
 
 const reviewSchema = mongoose.Schema({
   product_id: {type: Number, require: false},
+  rev_title: {type: String, require: false},
   username: {type: String, require: false},
   body_text: {type: String, require: false}, 
   location: {type: String, require: false},
   athletic_type: {type: String, require: false},
   age_range: {type: String, require: false},
   body_type: {type: String, require: false},
-  date: {type: Date, require: false},
+  date: {type: String, require: false},
   stars: {type: Number, require: false},
   fit: {type: Number, require: false},
   support: {type: Number, require: false},

@@ -6,44 +6,49 @@ const AttributesEntry = (props) => {
   return (
     <div id ='stars'>
       <img src = {require(`/Users/Jon/HRLA/Reviews-Module/client/dist/images/${props.item.stars}of5.gif`)}></img>
-      {/* {Array(props.item.stars).fill(<Star />)} */}
       <br></br>
-      {props.item.username}
-      <br></br>  
+      <p className = 'username'>
+        {props.item.username}
+      </p> 
       <br></br>
-      Location: {props.item.location}
-      <br></br>
-      Athletic Type: {props.item.athletic_type}
-      <br></br>
-      Age: {props.item.age_range}
-      <br></br>
-      Body Type: {props.item.body_type}
+      <div className = 'attributes-holder'>
+        <p className = 'attributes'>Location:</p> <p className = 'att-entry'>{props.item.location}</p>
+      </div>
+      <div className = 'attributes-holder'>
+        <p className = 'attributes'>Athletic Type:</p><p className = 'att-entry'>{props.item.athletic_type}</p>
+      </div>
+      <div className = 'attributes-holder'>
+        <p className = 'attributes'>Age:</p><p className = 'att-entry'>{props.item.age_range}</p>
+      </div>
+      <div className = 'attributes-holder'>
+        <p className = 'attributes'>Body Type:</p><p className = 'att-entry'>{props.item.body_type}</p>
+      </div>
       <br></br>
 
-      What You Like: {props.item.what_you_like}
+      <p className = 'att-entry'>What You Like</p> <p className = 'helpful'>{props.item.what_you_like} </p>
       <br></br>
-        Fit:
-      <div className = 'flex-grid'>
-        <div className = 'col'>
-        Fitted
+      <p className = 'att-entry'>Fit: </p>
+      <div className = 'flex-bar'>
+        <div className = 'col-quarter'>
+          <p className = 'helpful'> Fitted</p>
         </div>
-        <div className ='bar col'>
+        <div className ='bar col-bar'>
           <div style ={{ width: `${props.item.fit}%` }} className ='bar-inner'></div>
         </div>
-        <div className = 'col'>
-      Loose
+        <div className = 'col-quarter'>
+          <p className = 'helpful'> Loose </p>
         </div>
       </div>
-        Suport:
-      <div className = 'flex-grid'>
-        <div className = 'col'>
-        Light
+      <p className = 'att-entry'> Suport:</p>
+      <div className = 'flex-bar'>
+        <div className = 'col-quarter'>
+          <p className = 'helpful'>Light</p>
         </div>
-        <div className ='bar col'>
+        <div className ='bar col-bar'>
           <div style ={{ width: `${props.item.support}%` }} className ='bar-inner'></div>
         </div>
-        <div className = 'col'>
-      Full
+        <div className = 'col-quarter'>
+          <p className = 'helpful'>Full</p>
         </div>
       </div>
 

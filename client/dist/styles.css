@@ -1,9 +1,38 @@
+body {
+    background-color: #fafafa;
+}
+
 .flex-grid {
     display:flex;
 }
 
 .col {
     flex: 1;
+}
+
+.col-two-third {
+    width: 66%
+}
+
+
+.col-one-third {
+    width: 33%;
+    padding-right: 5px;
+}
+
+.flex-bar {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin-top: -20px;
+}
+
+.col-quarter {
+    width: 25%
+}
+
+.col-bar {
+    width: 50%;
 }
 
 .dotted {
@@ -16,7 +45,9 @@
     width: 100%;
     height: 5px;
     margin-bottom: 40px;
-    margin-left: 0px;
+    margin-right: 50px;
+    margin-top: 20px;
+    margin-left: 50px;
 }
 
 .bar-inner {
@@ -36,3 +67,163 @@
 
 }
 
+.small {
+    position: relative;
+    width: 20%;
+    padding-Bottom: 10px;
+
+}
+
+.date {
+    text-transform: uppercase;
+    border-bottom: 1px solid #D31334;
+    padding-bottom: 2px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #333333;
+    letter-spacing: 2px;
+}
+
+.review-title {
+    color: #333333;
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    line-height: 1.2;
+    text-transform: none;
+    font-size: 25px;
+    font-weight: 200;
+}
+
+.review-body {
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 1.3;
+    word-wrap: break-word;
+    zoom: 1;
+}
+
+.helpful {
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 1;
+}
+
+.report {
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    text-transform: uppercase;
+    line-height: 1;
+    color: #938454
+}
+
+.comment {
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #938454;
+    letter-spacing: 1px;
+}
+
+.username {
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #938454;
+}
+
+.attributes {
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    color: #777777;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.att-entry {
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    color: #777777;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+    /* padding-left: 3px; */
+}
+
+.aligned {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+h1 {
+    display: flex;
+    text-transform: uppercase;
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    border-bottom: 1px solid #D31334;
+    padding-bottom: 2px;
+    font-size: 15px;
+    font-weight: 800;
+    color: #333333;
+    letter-spacing: 2px;
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #333333;
+    max-width: 50%;
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    line-height: 1.2;
+    text-transform: none;
+    font-size: 25px;
+    font-weight: 200; 
+}
+
+.create {
+    display: flex;
+}
+
+.totalStars {
+    display: flex;
+}
+
+.create {
+    display: flex;
+    zoom: 1;
+    background: #FFFFFF;
+    border: 1px solid #938454;
+    width: auto;
+    padding: 0 20px;
+    height: 45px;
+    line-height: 45px;
+    overflow: visible;
+    vertical-align: top;
+    cursor: pointer;
+    transition: color 0.1s linear 0s;
+    color: #938454;
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.create:hover {
+    background: #938454;
+    color: #FFFFFF;
+}
+
+.attributes-holder {
+    display: flex;
+    flex-direction: row;
+    margin-top: -15px;
+}
