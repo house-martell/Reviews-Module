@@ -54,11 +54,11 @@ const Filters = (props) => {
           <span className="select-size">Athletic Type <img src = {require('/Users/Jon/HRLA/Reviews-Module/client/dist/images/arrow.png')}></img></span>
         </div>
         <div className="athletic-list">
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('Yogi', 'athletic_type')}>Yogi({props.athleticData['Yogi'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('Runner', 'athletic_type')}>Runner({props.athleticData['Runner'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('Dancer', 'athletic_type')}>Dancer({props.athleticData['Dancer'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('Cyclist', 'athletic_type')}>Cyclist({props.athleticData['Cyclist'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('Sweaty Generalist', 'athletic_type')}>Sweaty Generalist({props.athleticData['Sweaty Generalist'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('Yogi', 'athletic_type')}>Yogi({props.athleticData['Yogi'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('Runner', 'athletic_type')}>Runner({props.athleticData['Runner'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('Dancer', 'athletic_type')}>Dancer({props.athleticData['Dancer'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('Cyclist', 'athletic_type')}>Cyclist({props.athleticData['Cyclist'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('Sweaty Generalist', 'athletic_type')}>Sweaty Generalist({props.athleticData['Sweaty Generalist'] || 0})</div>
         </div>
       </div>
 
@@ -67,14 +67,14 @@ const Filters = (props) => {
           <span className="select-size">Age <img src = {require('/Users/Jon/HRLA/Reviews-Module/client/dist/images/arrow.png')}></img></span>
         </div>
         <div className="age-list">
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('Under 18', 'age_range')}>Under 18({props.ageData['Under 18'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('18-24', 'age_range')}>18-24({props.ageData['18-24'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('25-34', 'age_range')}>25-34({props.ageData['25-34'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('35-44', 'age_range')}>35-44({props.ageData['35-44'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('45-54', 'age_range')}>45-54({props.ageData['45-54'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('55-64', 'age_range')}>55-64({props.ageData['55-64'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('Over 65', 'age_range')}>Over 65({props.ageData['Over 65'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('I keep my age on the DL', 'age_range')}>I keep my age on the DL({props.ageData['I keep my age on the DL'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('Under 18', 'age_range')}>Under 18({props.ageData['Under 18'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('18-24', 'age_range')}>18-24({props.ageData['18-24'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('25-34', 'age_range')}>25-34({props.ageData['25-34'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('35-44', 'age_range')}>35-44({props.ageData['35-44'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('45-54', 'age_range')}>45-54({props.ageData['45-54'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('55-64', 'age_range')}>55-64({props.ageData['55-64'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('Over 65', 'age_range')}>Over 65({props.ageData['Over 65'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('I keep my age on the DL', 'age_range')}>I keep my age on the DL({props.ageData['I keep my age on the DL'] || 0})</div>
         </div>
       </div>  
 
@@ -84,13 +84,13 @@ const Filters = (props) => {
           <span className="select-size">Body Type <img src = {require('/Users/Jon/HRLA/Reviews-Module/client/dist/images/arrow.png')}></img></span>
         </div>
         <div className="body-list">
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('Athletic', 'body_type')}>Athletic({props.bodyData['Athletic'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('Curvy', 'body_type')}>Curvy({props.bodyData['Curvy'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('Lean', 'body_type')}>Lean({props.bodyData['Lean'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('Muscular', 'body_type')}>Muscular({props.bodyData['Muscular'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('Petite', 'body_type')}>Petite({props.bodyData['Petite'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('Slim', 'body_type')}>Slim({props.bodyData['Slim'] || 0})</div>
-          <div className="sizes clickable" onClick={() => props.filterMoreResults('Solid', 'body_type')}>Solid({props.bodyData['Solid'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('Athletic', 'body_type')}>Athletic({props.bodyData['Athletic'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('Curvy', 'body_type')}>Curvy({props.bodyData['Curvy'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('Lean', 'body_type')}>Lean({props.bodyData['Lean'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('Muscular', 'body_type')}>Muscular({props.bodyData['Muscular'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('Petite', 'body_type')}>Petite({props.bodyData['Petite'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('Slim', 'body_type')}>Slim({props.bodyData['Slim'] || 0})</div>
+          <div className="sizes clickable" onClick={() => props.filterResults('Solid', 'body_type')}>Solid({props.bodyData['Solid'] || 0})</div>
         </div>
       </div>  
 

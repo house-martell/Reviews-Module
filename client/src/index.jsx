@@ -34,7 +34,6 @@ class App extends React.Component {
     this.getAgeCount = this.getAgeCount.bind(this);
     this.getBodCount = this.getBodCount.bind(this);
     this.filterResults = this.filterResults.bind(this);
-    this.filterMoreResults = this.filterMoreResults.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
     this.getPageCount = this.getPageCount.bind(this);
     this.getOnlyTen = this.getOnlyTen.bind(this);
@@ -50,7 +49,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getReviews(this.getRandomNumber(6));
+    this.getReviews(this.getRandomNumber(5));
   }
 
   getReviews(id) {
@@ -145,17 +144,33 @@ class App extends React.Component {
 
   filterResults (selected, category) {
     let filter = new Promise((resolve, reject) => {
-      let newResults = [];
-      for (var i = 0; i < this.state.reviews.length; i++) {
-        if (this.state.reviews[i][category] === Number(selected)) {
-          newResults.push(this.state.reviews[i]);
+      if (this.state.view === 'default') {
+        let newResults = [];
+        for (var i = 0; i < this.state.reviews.length; i++) {
+          if (this.state.reviews[i][category] === selected) {
+            newResults.push(this.state.reviews[i]);
+          }
         }
-      }
-      this.setState({reviewsToDisplay: newResults});
-      if (this.state.reviews.length > 0) {
-        resolve('filtered results');
-      } else {
-        reject('no reviews');
+        this.setState({reviewsToDisplay: newResults});
+        if (this.state.reviews.length > 0) {
+          resolve('filtered results');
+        } else {
+          reject('no reviews');
+        }
+      } 
+      if (this.state.view === 'filtering') {
+        let newResults = [];
+        for (var i = 0; i < this.state.reviewsToDisplay.length; i++) {
+          if (this.state.reviewsToDisplay[i][category] === selected) {
+            newResults.push(this.state.reviewsToDisplay[i]);
+          }
+        }
+        this.setState({reviewsToDisplay: newResults});
+        if (this.state.reviews.length > 0) {
+          resolve('filtered results');
+        } else {
+          reject('no reviews');
+        }
       }
     });
     filter.then(() => {
@@ -174,43 +189,46 @@ class App extends React.Component {
         } 
       });
       
+    });
+    filter.then(() => {
+      this.setState({view: 'filtering'});
     });
   }
 
-  filterMoreResults (selected, category) {
-    let promise = new Promise((resolve, reject) => {
-      let filtered = [];
-      for (var i = 0; i < this.state.reviews.length; i++) {
-        if (this.state.reviews[i][category] === selected) {
-          filtered.push(this.state.reviews[i]);
-        }
-      }
-      console.log('filtered', filtered);
-      this.setState({reviewsToDisplay: filtered});
-      if (this.state.reviews.length > 0) {
-        resolve('array seeded');
-      } else {
-        reject('reviews not seeded');
-      }
-    });
-    promise.then(() => {
-      this.getOnlyTen(this.state.reviewsToDisplay, 0);
-    });
-    promise.then(() => {
-      this.getPageCount(this.state.reviewsToDisplay);
-    });
-    promise.then(() => {
-      let items = document.getElementsByClassName('reset');
-      items = Array.prototype.slice.call(items);
+  // filterMoreResults (selected, category) {
+  //   let promise = new Promise((resolve, reject) => {
+  //     let filtered = [];
+  //     for (var i = 0; i < this.state.reviews.length; i++) {
+  //       if (this.state.reviews[i][category] === selected) {
+  //         filtered.push(this.state.reviews[i]);
+  //       }
+  //     }
+  //     console.log('filtered', filtered);
+  //     this.setState({reviewsToDisplay: filtered});
+  //     if (this.state.reviews.length > 0) {
+  //       resolve('array seeded');
+  //     } else {
+  //       reject('reviews not seeded');
+  //     }
+  //   });
+  //   promise.then(() => {
+  //     this.getOnlyTen(this.state.reviewsToDisplay, 0);
+  //   });
+  //   promise.then(() => {
+  //     this.getPageCount(this.state.reviewsToDisplay);
+  //   });
+  //   promise.then(() => {
+  //     let items = document.getElementsByClassName('reset');
+  //     items = Array.prototype.slice.call(items);
       
-      items.forEach(item => {
-        if (!item.classList.contains('open')) {
-          item.classList.add('open');
-        } 
-      });
+  //     items.forEach(item => {
+  //       if (!item.classList.contains('open')) {
+  //         item.classList.add('open');
+  //       } 
+  //     });
       
-    });
-  }
+  //   });
+  // }
 
   getPageCount (array) {
     let count = (array.length / this.props.perPage);
@@ -282,6 +300,8 @@ class App extends React.Component {
         item.classList.remove('open');
       } 
     });
+
+    this.setState({view: 'default'});
 
   }
 
