@@ -1,6 +1,7 @@
 const express = require('express');
 const parser = require('body-parser');
 const path = require('path');
+const cors = require('cors');
 const connection = require('../database/index.js');
 const {getReviews} = require('../database/index.js');
 
@@ -8,6 +9,7 @@ const app = express();
 
 app.use(parser.json());
 app.use(parser.urlencoded({useNewUrlParser: true}));
+app.use(cors());
 
 app.use(express.static(__dirname + '/../client/dist'));
 
