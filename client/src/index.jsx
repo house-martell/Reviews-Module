@@ -182,12 +182,12 @@ class ReviewsPage extends React.Component {
       this.getPageCount(this.state.reviewsToDisplay);
     });
     filter.then(() => {
-      let items = document.getElementsByClassName('reset');
+      let items = document.getElementsByClassName(Styles2.reset);
       items = Array.prototype.slice.call(items);
       
       items.forEach(item => {
-        if (!item.classList.contains('open')) {
-          item.classList.add('open');
+        if (!item.classList.contains(Styles.open)) {
+          item.classList.add(Styles.open);
         } 
       });
       
@@ -260,7 +260,7 @@ class ReviewsPage extends React.Component {
 
   reset() {
     this.getReviews(this.state.reviews[0].product_id);
-    let items = document.getElementsByClassName('reset');
+    let items = document.getElementsByClassName(Styles.open);
     items = Array.prototype.slice.call(items);
       
     items.forEach(item => {
