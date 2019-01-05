@@ -1,6 +1,8 @@
 import React from 'react';
 import ReviewEntry from './ReviewEntry.jsx';
 import AttributesEntry from './AttributesEntry.jsx';
+import Styles from '../../dist/styles/Reviews.css';
+import classnames from 'classnames';
 
 const Reviews = (props) => {
   return (
@@ -9,32 +11,32 @@ const Reviews = (props) => {
       {props.reviewData.map((item, index) => {
         return (
           <div>
-            <div className = 'flex-grid'>
-              <div className = 'col-one-third'>
+            <div className = {Styles.flexGrid}>
+              <div className = {Styles.colOneThird}>
                 <AttributesEntry
                   item = {item}
                   key = {index}
                 />
               </div>
-              <div className = 'col-two-third'>
+              <div className = {Styles.colTwoThird}>
                 <ReviewEntry 
                   item = {item}
                   key = {index}
                 />
-                <hr className = 'dotted'/>
+                <hr className = {Styles.dotted}/>
 
-                <div className = 'flex-grid'>
-                  <div className = 'col helpful' >
+                <div className = {Styles.flexGrid}>
+                  <div className = {classnames(Styles.col, Styles.helpful)} >
                 Was this review helpful to you?
                   </div>
-                  <div className = 'col report'>
+                  <div className = {classnames(Styles.col, Styles.report)}>
                     Yes (0) | No (0) | Report as Innapropriate
                   </div>
 
                 </div>
                 <br></br>
                 <div>
-                  <p className = 'comment'>
+                  <p className = {Styles.comment}>
                     Post Comment
                   </p>
                 </div>

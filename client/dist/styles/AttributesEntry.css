@@ -1,0 +1,83 @@
+.username {
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #938454;
+}
+
+.attributesHolder {
+    display: flex;
+    flex-direction: row;
+    margin-top: -15px;
+}
+
+.attributes {
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    color: #777777;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.attEntry {
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    color: #777777;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+    /* padding-left: 3px; */
+}
+
+.helpful {
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 1;
+}
+
+.flexBar {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin-top: -20px;
+}
+
+.colQuarter {
+    width: 25%
+}
+
+.colBar {
+    width: 50%;
+}
+
+.bar {
+    background-color: #f2f2f1;
+    width: 100%;
+    height: 5px;
+    margin-bottom: 40px;
+    margin-right: 50px;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.barInner {
+    background-color: #afa276;
+    height: 100%;
+    position: relative;
+
+}
+
+.barInner:after {
+    position: absolute;
+    right: 2.5%;
+    content: attr(data-percent);
+    line-height: 30px;
+    color: #fff;
+    font-weight: 700;
+
+}
+

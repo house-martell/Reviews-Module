@@ -1,5 +1,6 @@
 import React from 'react';
-import { Star } from '@material-ui/icons';
+import Styles from '../../dist/styles/AttributesEntry.css';
+import classnames from 'classnames';
 
 
 const AttributesEntry = (props) => {
@@ -7,48 +8,48 @@ const AttributesEntry = (props) => {
     <div id ='stars'>
       <img src = {require(`/Users/Jon/HRLA/Reviews-Module/client/dist/images/${props.item.stars}of5.gif`)}></img>
       <br></br>
-      <p className = 'username'>
+      <p className = {Styles.username}>
         {props.item.username}
       </p> 
       <br></br>
-      <div className = 'attributes-holder'>
-        <p className = 'attributes'>Location:</p> <p className = 'att-entry'>{props.item.location}</p>
+      <div className = {Styles.attributesHolder}>
+        <p className = {Styles.attributes}>Location:</p> <p className = {Styles.attEntry}>{props.item.location}</p>
       </div>
-      <div className = 'attributes-holder'>
-        <p className = 'attributes'>Athletic Type:</p><p className = 'att-entry'>{props.item.athletic_type}</p>
+      <div className = {Styles.attributesHolder}>
+        <p className = {Styles.attributes}>Athletic Type:</p><p className = {Styles.attEntry}>{props.item.athletic_type}</p>
       </div>
-      <div className = 'attributes-holder'>
-        <p className = 'attributes'>Age:</p><p className = 'att-entry'>{props.item.age_range}</p>
+      <div className = {Styles.attributesHolder}>
+        <p className = {Styles.attributes}>Age:</p><p className = {Styles.attEntry}>{props.item.age_range}</p>
       </div>
-      <div className = 'attributes-holder'>
-        <p className = 'attributes'>Body Type:</p><p className = 'att-entry'>{props.item.body_type}</p>
+      <div className = {Styles.attributesHolder}>
+        <p className = {Styles.attributes}>Body Type:</p><p className = {Styles.attEntry}>{props.item.body_type}</p>
       </div>
       <br></br>
 
-      <p className = 'att-entry'>What You Like</p> <p className = 'helpful'>{props.item.what_you_like} </p>
+      <p className = {Styles.attEntry}>What You Like</p> <p className = {Styles.helpful}>{props.item.what_you_like} </p>
       <br></br>
-      <p className = 'att-entry'>Fit: </p>
-      <div className = 'flex-bar'>
-        <div className = 'col-quarter'>
-          <p className = 'helpful'> Fitted</p>
+      <p className = {Styles.attEntry}>Fit: </p>
+      <div className = {Styles.flexBar}>
+        <div className = {Styles.colQuarter}>
+          <p className = {Styles.helpful}> Fitted</p>
         </div>
-        <div className ='bar col-bar'>
-          <div style ={{ width: `${props.item.fit}%` }} className ='bar-inner'></div>
+        <div className ={classnames(Styles.bar, Styles.colBar)}>
+          <div style ={{ width: `${props.item.fit}%` }} className ={Styles.barInner}></div>
         </div>
-        <div className = 'col-quarter'>
-          <p className = 'helpful'> Loose </p>
+        <div className = {Styles.colQuarter}>
+          <p className = {Styles.helpful}> Loose </p>
         </div>
       </div>
-      <p className = 'att-entry'> Suport:</p>
-      <div className = 'flex-bar'>
-        <div className = 'col-quarter'>
-          <p className = 'helpful'>Light</p>
+      <p className = {Styles.attEntry}> Suport:</p>
+      <div className = {Styles.flexBar}>
+        <div className = {Styles.colQuarter}>
+          <p className = {Styles.helpful}>Light</p>
         </div>
-        <div className ='bar col-bar'>
-          <div style ={{ width: `${props.item.support}%` }} className ='bar-inner'></div>
+        <div className ={classnames(Styles.bar, Styles.colBar)}>
+          <div style ={{ width: `${props.item.support}%` }} className ={Styles.barInner}></div>
         </div>
-        <div className = 'col-quarter'>
-          <p className = 'helpful'>Full</p>
+        <div className = {Styles.colQuarter}>
+          <p className = {Styles.helpful}>Full</p>
         </div>
       </div>
 

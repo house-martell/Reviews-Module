@@ -1,0 +1,150 @@
+.aligned {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .head {
+    display: flex;
+    text-transform: uppercase;
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    border-bottom: 1px solid #D31334;
+    padding-bottom: 2px;
+    font-size: 15px;
+    font-weight: 800;
+    color: #333333;
+    letter-spacing: 2px;
+    padding-bottom: 10px;
+}
+
+.secondHead {
+    color: #333333;
+    max-width: 50%;
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    line-height: 1.2;
+    text-transform: none;
+    font-size: 25px;
+    font-weight: 200; 
+}
+
+.create {
+    display: flex;
+    zoom: 1;
+    background: #FFFFFF;
+    border: 1px solid #938454;
+    width: auto;
+    padding: 0 20px;
+    height: 45px;
+    line-height: 45px;
+    overflow: visible;
+    vertical-align: top;
+    cursor: pointer;
+    transition: color 0.1s linear 0s;
+    color: #938454;
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.create:hover {
+    background: #938454;
+    color: #FFFFFF;
+}
+
+
+
+.separator {
+    width: 90%;
+    opacity: 80%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.reviewHolder {
+    justify-content: center;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lister {
+    display: flex;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #CCC;
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif; 
+
+}
+
+.active {
+  color: #ffffff;
+  padding: 1px 6px;
+  border-radius: 100px;
+  background-color: #938454;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-basis: auto;
+    list-style-type: none;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #CCC;
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif; 
+    
+}
+
+.ratingList {
+    display: none;
+    position: absolute;
+    top: 48px;
+    z-index: 10;
+    
+  }
+
+  .fitList {
+    display: none;
+    position: absolute;
+    top: 48px;
+    z-index: 10;
+  }
+
+  .bodyList {
+    display: none;
+    position: absolute;
+    top: 48px;
+    z-index: 10;
+  }
+
+  .ageList {
+    display: none;
+    position: absolute;
+    top: 48px;
+    z-index: 10;
+  }
+
+  .athleticList {
+    display: none;
+    position: absolute;
+    top: 48px;
+    z-index: 10;
+  }
+
+  .supportList {
+    display: none;
+    position: absolute;
+    top: 48px;
+    z-index: 10;
+  }
+
+  .open {
+    display: block!important;
+  }

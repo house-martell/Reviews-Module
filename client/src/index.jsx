@@ -4,10 +4,12 @@ import Reviews from './components/Reviews.jsx';
 import axios from 'axios';
 import Filters from './components/Filters.jsx';
 import ReactPaginate from 'react-paginate';
+import Styles from '../../client/dist/styles/Index.css';
+import Styles2 from '../../client/dist/styles/Filters.css';
 
 
 
-class App extends React.Component {
+class ReviewsPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -195,41 +197,6 @@ class App extends React.Component {
     });
   }
 
-  // filterMoreResults (selected, category) {
-  //   let promise = new Promise((resolve, reject) => {
-  //     let filtered = [];
-  //     for (var i = 0; i < this.state.reviews.length; i++) {
-  //       if (this.state.reviews[i][category] === selected) {
-  //         filtered.push(this.state.reviews[i]);
-  //       }
-  //     }
-  //     console.log('filtered', filtered);
-  //     this.setState({reviewsToDisplay: filtered});
-  //     if (this.state.reviews.length > 0) {
-  //       resolve('array seeded');
-  //     } else {
-  //       reject('reviews not seeded');
-  //     }
-  //   });
-  //   promise.then(() => {
-  //     this.getOnlyTen(this.state.reviewsToDisplay, 0);
-  //   });
-  //   promise.then(() => {
-  //     this.getPageCount(this.state.reviewsToDisplay);
-  //   });
-  //   promise.then(() => {
-  //     let items = document.getElementsByClassName('reset');
-  //     items = Array.prototype.slice.call(items);
-      
-  //     items.forEach(item => {
-  //       if (!item.classList.contains('open')) {
-  //         item.classList.add('open');
-  //       } 
-  //     });
-      
-  //   });
-  // }
-
   getPageCount (array) {
     let count = (array.length / this.props.perPage);
     this.setState({pageCount: count});
@@ -269,22 +236,23 @@ class App extends React.Component {
     let items = document.getElementsByClassName(className);
     items = Array.prototype.slice.call(items);
     items.forEach(item => {
-      if (!item.classList.contains('open')) {
-        item.classList.add('open');
+      if (!item.classList.contains(Styles.open)) {
+        item.classList.add(Styles.open);
       } else {
-        item.classList.remove('open');
+        item.classList.remove(Styles.open);
       }
     });
   }
 
   onClick() {
-    let arr = ['rating-list', 'fit-list', 'support-list', 'athletic-list', 'age-list', 'body-list'];
+    let arr = [Styles2.ratingList, Styles2.fitList, Styles2.supportList, Styles2.athleticList, Styles2.ageList, Styles2.bodyList];
     for (var i = 0; i < arr.length; i++) {
       let items = document.getElementsByClassName(arr[i]);
       items = Array.prototype.slice.call(items);
       items.forEach(item => {
-        if (item.classList.contains('open')) {
-          item.classList.remove('open');
+        if (item.classList.contains(Styles.open)) {
+          console.log(item.classList);
+          item.classList.remove(Styles.open);
         } 
       });
     }
@@ -296,8 +264,8 @@ class App extends React.Component {
     items = Array.prototype.slice.call(items);
       
     items.forEach(item => {
-      if (item.classList.contains('open')) {
-        item.classList.remove('open');
+      if (item.classList.contains(Styles.open)) {
+        item.classList.remove(Styles.open);
       } 
     });
 
@@ -309,12 +277,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className = 'main'>
-        <div className = 'aligned'>
-          <h1 className = 'head'> Reviews</h1>
-          <h2> How's this gear working for you?</h2>
+      <div>
+        <div className = {Styles.aligned}>
+          <h1 className = {Styles.head}> Reviews</h1>
+          <h2 className = {Styles.secondHead}> How's this gear working for you?</h2>
           <img src = {require(`/Users/Jon/HRLA/Reviews-Module/client/dist/images/${this.state.totalStars}of5.gif`)} className = 'totalStars'></img>
-          <button className = 'create'>Create a Review</button>
+          <button className = {Styles.create}>Create a Review</button>
         </div>
         
         
@@ -333,12 +301,12 @@ class App extends React.Component {
         
         
         <div>
-          <hr className = 'separator'></hr>
+          <hr className = {Styles.separator}></hr>
         </div>
 
 
-        <div className = 'review-holder' onClick = {() => this.onClick()}>
-          <div className="commentBox">
+        <div className = {Styles.reviewHolder} onClick = {() => this.onClick()}>
+          <div>
             <Reviews
               reviewData = {this.state.reviewsToDisplay}
             />
@@ -350,33 +318,25 @@ class App extends React.Component {
               marginPagesDisplayed={2}
               pageRangeDisplayed={5}
               onPageChange={this.handlePageClick}
-              containerClassName={'pagination'}
-              subContainerClassName={'pages pagination'}
-              activeClassName={'active'} />
+              containerClassName={Styles.pagination}
+              subContainerClassName={Styles.lister}
+              activeClassName={Styles.active} 
+              pageClassName ={Styles.lister}/>
+              
           </div>
 
-          {/* <div id = 'reviewData'>
-            
-            
-          </div> */}
+         
         </div>
       </div>
-      
 
-      
     );
   }
-
-
-
 }
 
-
-
-ReactDOM.render(<App 
+ReactDOM.render(<ReviewsPage 
   perPage = {10}
 />, document.getElementById('reviews'));
 
 
 
-
+export default ReviewsPage;

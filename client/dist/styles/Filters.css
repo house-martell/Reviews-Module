@@ -1,0 +1,128 @@
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    background-color: #f6f6f6;
+    margin-top: 40px;
+    margin-bottom: 70px;
+    margin-left: 35px
+    
+    
+}
+
+.sortOrder {
+    padding-left: 240px;
+    align-self: center;
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #666666;
+    letter-spacing: 2px;
+}
+
+.dropdownContainer {
+    position: relative;
+  }
+
+  .itemDropdown {
+    width: 100%;
+    padding: 16px;
+    margin: 5px 0;
+    background-color: #f6f6f6;
+    font-size: 20px;
+    border: none;
+    outline: none;
+  }
+  .selectItem {
+    display: block;
+    font-size: 13px;
+    width: 100%;
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif;
+    font-weight: 500;
+    text-align: left;
+    align-self: center;
+    text-transform: uppercase;
+    padding-top: 4px;
+    color: #666666;
+    letter-spacing: 2px;
+  }
+  .ratingList {
+    display: none;
+    position: absolute;
+    top: 48px;
+    z-index: 10;
+    
+  }
+
+  .fitList {
+    display: none;
+    position: absolute;
+    top: 48px;
+    z-index: 10;
+  }
+
+  .bodyList {
+    display: none;
+    position: absolute;
+    top: 48px;
+    z-index: 10;
+  }
+
+  .ageList {
+    display: none;
+    position: absolute;
+    top: 48px;
+    z-index: 10;
+  }
+
+  .athleticList {
+    display: none;
+    position: absolute;
+    top: 48px;
+    z-index: 10;
+  }
+
+  .supportList {
+    display: none;
+    position: absolute;
+    top: 48px;
+    z-index: 10;
+  }
+
+
+  .items {
+    width: 100%;
+    padding: 16px;
+    margin: 0;
+    background-color: white;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    text-align: left;
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif; 
+    text-transform: uppercase;
+  }
+
+  .open {
+    display: block!important;
+  }
+
+  .reset {
+    display: none;
+    position: relative;
+    top: 25px;
+    font-size: 15px;
+    font-family: Calibre,'Helvetica Neue','Helvetica','Roboto','Arial',sans-serif; 
+    color: red;
+    text-transform: uppercase;
+  }
+
+  .reset:hover {
+      font-weight: 600;
+  }
+
+  .open {
+    display: block!important;
+  }
