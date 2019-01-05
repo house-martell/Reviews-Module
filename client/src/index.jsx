@@ -56,7 +56,7 @@ class ReviewsPage extends React.Component {
 
   getReviews(id) {
     axios
-      .get(`/Reviews/${id}`)
+      .get(`http://54.193.53.174/Reviews/${id}`)
       .then((data) => this.setState({reviews: data.data}))
       .then(data => this.totalStars(this.state.reviews))
       .then(data => this.getOnlyTen(this.state.reviews, this.state.index))
