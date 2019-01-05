@@ -8,7 +8,7 @@ const Filters = (props) => {
 
       <div className={Styles.dropdownContainer}>
         <div className={classnames(Styles.itemDropdown, Styles.clickable)} onClick={() => props.onDropdown(Styles.ratingList)}>
-          <span className= {Styles.selectItem}>Rating <img src = {require('/Users/Jon/HRLA/Reviews-Module/client/dist/images/arrow.png')}></img></span>
+          <span className= {Styles.selectItem}>Rating <img src = {'https://s3-us-west-1.amazonaws.com/reviewsmodulejon/arrow.png'}></img></span>
         </div>
         <div className= {Styles.ratingList}>
           <div value = "1" className= {classnames(Styles.items, Styles.clickable)} onClick={() => props.filterResults(1, 'stars')}>1 STAR({props.starData[1] || 0})</div>
@@ -22,7 +22,7 @@ const Filters = (props) => {
 
       <div className={Styles.dropdownContainer}>
         <div className={classnames(Styles.itemDropdown, Styles.clickable)} onClick={() => props.onDropdown(Styles.fitList)}>
-          <span className={Styles.selectItem}>Fit <img src = {require('/Users/Jon/HRLA/Reviews-Module/client/dist/images/arrow.png')}></img></span>
+          <span className={Styles.selectItem}>Fit <img src = {'https://s3-us-west-1.amazonaws.com/reviewsmodulejon/arrow.png'}></img></span>
         </div>
         <div className={Styles.fitList}>
           <div className={classnames(Styles.items, Styles.clickable)} onClick={() => props.filterResults(14, 'fit')}>Second Skin({props.fitData[14] || 0})</div>
@@ -37,7 +37,7 @@ const Filters = (props) => {
 
       <div className={Styles.dropdownContainer}>
         <div className={classnames(Styles.itemDropdown, Styles.clickable)} onClick={() => props.onDropdown(Styles.supportList)}>
-          <span className={Styles.selectItem}>Support <img src = {require('/Users/Jon/HRLA/Reviews-Module/client/dist/images/arrow.png')}></img></span>
+          <span className={Styles.selectItem}>Support <img src = {'https://s3-us-west-1.amazonaws.com/reviewsmodulejon/arrow.png'}></img></span>
         </div>
         <div className={Styles.supportList}>
           <div className={classnames(Styles.items, Styles.clickable)} onClick={() => props.filterResults(14, 'support')}>Just Enough({props.supportData[14] || 0})</div>
@@ -53,7 +53,7 @@ const Filters = (props) => {
 
       <div className={Styles.dropdownContainer}>
         <div className={classnames(Styles.itemDropdown, Styles.clickable)} onClick={() => props.onDropdown(Styles.athleticList)}>
-          <span className={Styles.selectItem}>Athletic Type <img src = {require('/Users/Jon/HRLA/Reviews-Module/client/dist/images/arrow.png')}></img></span>
+          <span className={Styles.selectItem}>Athletic Type <img src = {'https://s3-us-west-1.amazonaws.com/reviewsmodulejon/arrow.png'}></img></span>
         </div>
         <div className= {Styles.athleticList}>
           <div className={classnames(Styles.items, Styles.clickable)} onClick={() => props.filterResults('Yogi', 'athletic_type')}>Yogi({props.athleticData['Yogi'] || 0})</div>
@@ -66,7 +66,7 @@ const Filters = (props) => {
 
       <div className={Styles.dropdownContainer}>
         <div className={classnames(Styles.itemDropdown, Styles.clickable)} onClick={() => props.onDropdown(Styles.ageList)}>
-          <span className={Styles.selectItem}>Age <img src = {require('/Users/Jon/HRLA/Reviews-Module/client/dist/images/arrow.png')}></img></span>
+          <span className={Styles.selectItem}>Age <img src = {'https://s3-us-west-1.amazonaws.com/reviewsmodulejon/arrow.png'}></img></span>
         </div>
         <div className={Styles.ageList}>
           <div className={classnames(Styles.items, Styles.clickable)} onClick={() => props.filterResults('Under 18', 'age_range')}>Under 18({props.ageData['Under 18'] || 0})</div>
@@ -83,7 +83,7 @@ const Filters = (props) => {
 
       <div className={Styles.dropdownContainer}>
         <div className={classnames(Styles.itemDropdown, Styles.clickable)} onClick={() => props.onDropdown(Styles.bodyList)}>
-          <span className={Styles.selectItem}>Body Type <img src = {require('/Users/Jon/HRLA/Reviews-Module/client/dist/images/arrow.png')}></img></span>
+          <span className={Styles.selectItem}>Body Type <img src = {'https://s3-us-west-1.amazonaws.com/reviewsmodulejon/arrow.png'}></img></span>
         </div>
         <div className={Styles.bodyList}>
           <div className={classnames(Styles.items, Styles.clickable)} onClick={() => props.filterResults('Athletic', 'body_type')}>Athletic({props.bodyData['Athletic'] || 0})</div>
@@ -103,7 +103,7 @@ const Filters = (props) => {
       </div>
 
       <div className = {Styles.sortOrder}>
-        | Choose a Sort Order <img src = {require('/Users/Jon/HRLA/Reviews-Module/client/dist/images/arrow.png')}></img>
+        | Choose a Sort Order <img src = {'https://s3-us-west-1.amazonaws.com/reviewsmodulejon/arrow.png'}></img>
       </div>
      
     

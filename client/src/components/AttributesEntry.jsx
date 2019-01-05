@@ -6,7 +6,7 @@ import classnames from 'classnames';
 const AttributesEntry = (props) => {
   return (
     <div id ='stars'>
-      <img src = {require(`/Users/Jon/HRLA/Reviews-Module/client/dist/images/${props.item.stars}of5.gif`)}></img>
+      <img src = {`https://s3-us-west-1.amazonaws.com/reviewsmodulejon/${props.item.stars}of5.gif`}></img>
       <br></br>
       <p className = {Styles.username}>
         {props.item.username}

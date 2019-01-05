@@ -281,7 +281,7 @@ class ReviewsPage extends React.Component {
         <div className = {Styles.aligned}>
           <h1 className = {Styles.head}> Reviews</h1>
           <h2 className = {Styles.secondHead}> How's this gear working for you?</h2>
-          <img src = {require(`/Users/Jon/HRLA/Reviews-Module/client/dist/images/${this.state.totalStars}of5.gif`)} className = 'totalStars'></img>
+          <img src = {`https://s3-us-west-1.amazonaws.com/reviewsmodulejon/${this.state.totalStars}of5.gif`} className = 'totalStars'></img>
           <button className = {Styles.create}>Create a Review</button>
         </div>
         
